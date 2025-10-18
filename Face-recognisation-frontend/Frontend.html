@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Face Recognition</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f6f9;
+    }
+    .container {
+      border: 2px solid #333;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 850px;
+      background: #fff;
+    }
+    .box {
+      text-align: center;
+      width: 40%;
+      border: 1px solid #444;
+      padding: 15px;
+      background: #f9f9f9;
+    }
+    .title {
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    video, canvas, .db-image {
+      width: 200px;
+      height: 200px;
+      border: 2px dashed #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      background: #eaeaea;
+      object-fit: cover;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      border: none;
+      background: #007bff;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .equals {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 0 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Left side -->
+    <div class="box">
+      <div class="title">Face Recognition</div>
+      <video id="camera" autoplay></video>
+      <canvas id="capturedImage" style="display:none;"></canvas>
+      <button id="captureBtn">📷 Capture</button>
+    </div>
+
+    <!-- Middle -->
+    <div class="equals">=</div>
+
+    <!-- Right side -->
+    <div class="box">
+      <div class="title">Match Images</div>
+      <div class="db-image" id="dbImageBox">DB Image</div>
+      <button id="matchBtn">Match Your Image</button>
+    </div>
+
+  </div>
+
+  <script>
+    // Access camera
+    const video = document.getElementById('camera');
+    const canvas = document.getElementById('capturedImage');
+    const captureBtn = document.getElementById('captureBtn');
+    const context = canvas.getContext('2d');
+
+    // Open webcam
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(err => {
+        alert("Error accessing camera: " + err);
+      });
+
+    // Capture photo
+    captureBtn.addEventListener('click', () => {
+      canvas.style.display = "block";
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Optionally: Stop live video after capture
+      // video.style.display = "none";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+/* Background */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  font-family: Arial, sans-serif;
+}
+
+/* Card */
+.card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Heading */
+.card h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #333;
+}
+
+/* Inputs */
+.card form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border 0.3s ease;
+}
+
+.card form input:focus {
+  border-color: #667eea;
+  outline: none;
+}
+
+/* Button */
+.card form button {
+  width: 100%;
+  padding: 12px;
+  background: #667eea;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card form button:hover {
+  background: #5a67d8;
+}
+
+.card form button:disabled {
+  background: #999;
+  cursor: not-allowed;
+}
+
+/* Response Box */
+.response-box {
+  margin-top: 20px;
+  background: #f3f4f6;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 13px;
+  color: #333;
+  max-height: 200px;
+  overflow-y: auto;
+}
