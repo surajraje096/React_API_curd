@@ -1,3 +1,6 @@
 node_modules/
 *.png
 .DS_Store
+face-recognition-project
+face-recognition-project/
+face-recognition-project/*
